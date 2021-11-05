@@ -2,15 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-export default function FirtScreen({ navigation }) {
+export default function ClientsScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>FirtScreen</Text>
+      <Text>Clients Screen</Text>
       <Button
         style={styles.button}
-        title="Go to next page"
+        title="Go to Clients Screen"
         color="black"
-        onPress={() => navigation.navigate('SecondScreen')}>
+        onPress={() => navigation.navigate('InfoScreen')}>
       </Button>
     </View>
   );

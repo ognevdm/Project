@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import FirtScreen from "./src/screen/FirtScreen";
-import SecondScreen from "./src/screen/SecondScreen";
+import ClientsScreen from "./src/screen/ClientsScreen";
+import InfoScreen from "./src/screen/InfoScreen";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -14,12 +14,11 @@ const Stack = createStackNavigator();
 export default function App({ navigation }) {
   return (
     <NavigationContainer>
-
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='FirtScreen' component={FirtScreen} />
-        <Stack.Screen name='SecondScreen' component={SecondScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name ='ClientsScreen' component ={ClientsScreen} />
+      <Stack.Screen name ='InfoScreen' component ={InfoScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
