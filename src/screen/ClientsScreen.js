@@ -18,8 +18,8 @@ export default function ClientsScreen({ navigation }) {
   {
     /* массив*/
   }
-  const clients = ['Иван Иванов', 'Василий Петров', 'Сергей Сидоров'];
-  const client = 'Иван Иванов';
+  //const clients = ['Иван Иванов', 'Василий Петров', 'Сергей Сидоров'];
+  //const client = 'Иван Иванов';
 
 
 
@@ -135,6 +135,7 @@ export default function ClientsScreen({ navigation }) {
           title={item.name + ' ' + item.surname}
         />
       </TouchableOpacity>
+      
     );
   };
   return (
@@ -143,9 +144,9 @@ export default function ClientsScreen({ navigation }) {
       <Text>{title}</Text>
       <FlatList data={newClientObj} renderItem={renderItem} />
 
-      <Text style={styles.text}>Введите имя нового клиента</Text>
-
-      <TextInput
+   {/*  
+   !блок ввода имени и фамилии
+   <TextInput
         style={styles.textInput}
         onChangeText={onChangeClientName}
         value={nameNewClient}
@@ -155,12 +156,15 @@ export default function ClientsScreen({ navigation }) {
         style={styles.textInput}
         onChangeText={onChangeClientSurname}
         value={surnameNewClient}
-      />
+      /> */}
 
-      <Button title="Add client" onPress={() => addNewClient()} />
+    <Button title="Add client" onPress={() => {
+      return navigation.navigate('InputScreen');
+    }}/>
 
-      <Button title="Change title" onPress={() => setTitle(newTitle)} />
     </View>
+  
+  
   );
 }
 

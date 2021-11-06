@@ -16,10 +16,8 @@ import {
 } from 'react-native';
 
 export default function InfoScreen({ navigation, route }) {
-  {
-    /* переменная для передачи значений массива*/
-  }
-  const client = route.params.client;
+   /* переменная для передачи значений массива*/
+const client = route.params.client;
 
   const {
     name,
@@ -60,10 +58,6 @@ if (coupons === 50 ||coupons === 25  )
   cpnColor = 'yellow'
 }
 
-
-
-
-
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -74,7 +68,6 @@ if (coupons === 50 ||coupons === 25  )
       <TextsField textTitle="Отчество:" textContent={fathername} />
       <TextsField textTitle="Телефон:" textContent={phone} />
       <TextsField textTitle="Номер карты:" textContent={card} cardColor = {crdColor} />
-
       <InfoArea areaTitle="Клиент заблокирован?" areaContent={blocked} />
       <InfoArea
         areaTitle="Количество купонов в БД:"
