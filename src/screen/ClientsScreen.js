@@ -15,21 +15,10 @@ import GreyButton from '../components/GreyButton';
 import Header from '../components/Header';
 
 export default function ClientsScreen({ navigation }) {
-  {
-    /* массив*/
-  }
-  //const clients = ['Иван Иванов', 'Василий Петров', 'Сергей Сидоров'];
-  //const client = 'Иван Иванов';
-
-
-
-  const [title, setTitle] = useState('CURRENT TITLE');
-  const newTitle = 'NEW TITLE';
-
 
   // хуки изменения поля ввода имени клиента
-  const [nameNewClient, onChangeClientName] = useState(null);
-  const [surnameNewClient, onChangeClientSurname] = useState(null);
+  //const [nameNewClient, onChangeClientName] = useState(null);
+  //  const [surnameNewClient, onChangeClientSurname] = useState(null);
 
   const currentClients = [
     {
@@ -90,42 +79,53 @@ export default function ClientsScreen({ navigation }) {
   ];
 
 
-  // хуки добавления клиента
+  // !!!хуки добавления клиента
   const [newClientObj, setClientObj] = useState(currentClients);
 
-  // функция добавления клиента
-  const addNewClient = () => {
-    setClientObj([...newClientObj,
-    {
-      name: nameNewClient,
-      surname: surnameNewClient,
-      fathername: ' ',
-      phone: ' ',
-      card: '0000',
-      blocked: true,
-      coupons: 0,
-      takedCoupons: 0,
-      age: 0,
-    }]
-    );
-    console.log(newClientObj);
-  };
+  // ---- функция добавления клиента
+  /*  const addNewClient = () => {
+ 
+     //новый клиент
+   let newClient = {
+       name: " ",
+       surname: " ",
+       fathername: " ",
+       phone: " ",
+       card: " ",
+       blocked: " ",
+       coupons: " ",
+       takedCoupons: "0",
+       age: "NA",
+     };
+     // добавляем нового клиента к текущим клиентам
+     return (
+       setClientObj([...newClientObj, newClient])
+     )
+   }; */
+
+  // функция, которая вызывается в InputScreen и передается в него по кнопке Add Client
+  let newClient = {
+    name: " ",
+    surname: " ",
+    fathername: " ",
+    phone: " ",
+    card: " ",
+    blocked: " ",
+    coupons: " ",
+    takedCoupons: " ",
+    age: " ",
+  }
+  let onAddNewClient = (newClient) => {
+    return (
+      setClientObj([...newClientObj, newClient])
+    )
+  }
 
   const renderItem = ({ item }) => {
     let cardColor = 'purple';
-    let blColor = 'black';
-    if (item.age < 20) {
-      blColor = 'green';
-    } else if (item.age >= 20 && item.age <= 40) {
-      blColor = 'red';
-    } else {
-      blColor = 'pink';
-    }
-    if (item.age === 20 || item.age === 40) {
-      blColor = 'yellow';
-    }
-
+    let blColor = 'grey';
     return (
+      /* передаем данные клиентов на  экран InfoScreen*/
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('InfoScreen', { client: item })}>
@@ -135,36 +135,26 @@ export default function ClientsScreen({ navigation }) {
           title={item.name + ' ' + item.surname}
         />
       </TouchableOpacity>
-      
+
     );
   };
   return (
     <View style={styles.container}>
       <Header />
-      <Text>{title}</Text>
       <FlatList data={newClientObj} renderItem={renderItem} />
 
-   {/*  
-   !блок ввода имени и фамилии
-   <TextInput
-        style={styles.textInput}
-        onChangeText={onChangeClientName}
-        value={nameNewClient}
-      />
-      <Text style={styles.text} >Введите фамилию нового клиента</Text>
-      <TextInput
-        style={styles.textInput}
-        onChangeText={onChangeClientSurname}
-        value={surnameNewClient}
-      /> */}
 
-    <Button title="Add client" onPress={() => {
-      return navigation.navigate('InputScreen');
-    }}/>
 
+      <Button title="ADD CLIENTS IN NEW SCREEN" onPress={() => {
+        return navigation.navigate('InputScreen', { onAddNewClient })
+      }} />
+
+      <Button title="DEBUG: SHOW CLIENTS" onPress={() => {
+        console.log(newClientObj)
+      }} />
     </View>
-  
-  
+
+
   );
 }
 

@@ -78,6 +78,10 @@ if (coupons === 50 ||coupons === 25  )
         styleTitle={{ color: 'black' }}
       />
       <TextsField textTitle="Выдано на руки:" textContent={takedCoupons} />
+
+      <Button title="DEBUG:SHOW CLIENT" onPress={() => {
+        console.log(client)
+      }} />
     </View>
   );
 }
