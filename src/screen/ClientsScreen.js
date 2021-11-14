@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import DropDownPicker from 'react-native-dropdown-picker';
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   View,
@@ -20,6 +21,23 @@ export default function ClientsScreen({ navigation }) {
   //const [nameNewClient, onChangeClientName] = useState(null);
   //  const [surnameNewClient, onChangeClientSurname] = useState(null);
 
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: 'Директор', value: 'директор' },
+    { label: 'Дворник', value: 'дворник' },
+    { label: 'CEO', value: 'ceo' },
+    { label: 'CTO', value: 'cto' },
+  ]);
+
+
+
+useEffect(() => {
+  const newFilteredClients = currentClients.filter(client => client.position === value);
+  setFilteredClients(newFilteredClients);
+}, [value])
+  
+
   const currentClients = [
     {
       name: 'Иван',
@@ -31,6 +49,7 @@ export default function ClientsScreen({ navigation }) {
       coupons: 11,
       takedCoupons: 3,
       age: 45,
+      position:"директор"
     },
     {
       name: 'Сергей',
@@ -42,6 +61,7 @@ export default function ClientsScreen({ navigation }) {
       coupons: 6,
       takedCoupons: 4,
       age: 10,
+      position:"дворник"
     },
     {
       name: 'Александр',
@@ -53,6 +73,7 @@ export default function ClientsScreen({ navigation }) {
       coupons: 25,
       takedCoupons: 10,
       age: 40,
+      position:"дворник"
     },
     {
       name: 'Василий',
@@ -64,6 +85,7 @@ export default function ClientsScreen({ navigation }) {
       coupons: 3,
       takedCoupons: 7,
       age: 60,
+      position:"ceo"
     },
     {
       name: 'Вадим',
@@ -75,12 +97,14 @@ export default function ClientsScreen({ navigation }) {
       coupons: 0,
       takedCoupons: 1,
       age: 22,
+      position:"cto"
     },
   ];
 
 
   // !!!хуки добавления клиента
   const [newClientObj, setClientObj] = useState(currentClients);
+  const [filteredClients, setFilteredClients] = useState(currentClients);
 
   // ---- функция добавления клиента
   /*  const addNewClient = () => {
@@ -139,11 +163,21 @@ export default function ClientsScreen({ navigation }) {
     );
   };
   return (
+
+
+
     <View style={styles.container}>
+
       <Header />
-      <FlatList data={newClientObj} renderItem={renderItem} />
-
-
+      <DropDownPicker style={styles.picker}
+        open={open}
+        value={value}
+        items={items}
+        setOpen={setOpen}
+        setValue={setValue}
+        setItems={setItems}
+      />
+      <FlatList data={filteredClients} renderItem={renderItem} />
 
       <Button title="ADD CLIENTS IN NEW SCREEN" onPress={() => {
         return navigation.navigate('InputScreen', { onAddNewClient })
@@ -180,5 +214,11 @@ const styles = StyleSheet.create({
   button: {
     width: '100%',
     paddingLeft: 20,
+  },picker: {
+    padding:20,
+    backgroundColor: 'yellow',
+    flex: 1,
+    height: '100%',
+    width: '100%',
   },
 });

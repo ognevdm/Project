@@ -19,15 +19,15 @@ const onAddNewClient = route.params.onAddNewClient
 
 
   // хуки для полей ввода данных
-  const [nameNewClient, onChangeClientName] = useState(" ");
-  const [surenameNewClient, onChangeClientSurName] = useState(" ");
-  const [fathernameNewClient, onChangeClientFatherName] = useState(" ");
-  const [phoneNewClient, onChangeClientPhone] = useState(" ");
-  const [cardNewClient, onChangeClientCard] = useState(" ");
-  const [blockedNewClient, onChangeClientBlocked] = useState(" ");
-  const [couponsNewClient, onChangeClientCoupons] = useState(" ");
-  const [takeCouponsNewClient, onChangeClientTakedCoupons] = useState(" ");
-  const [ageNewClient, onChangeClientAge] = useState(" ");
+  const [nameNewClient, onChangeClientName] = useState();
+  const [surenameNewClient, onChangeClientSurName] = useState();
+  const [fathernameNewClient, onChangeClientFatherName] = useState();
+  const [phoneNewClient, onChangeClientPhone] = useState();
+  const [cardNewClient, onChangeClientCard] = useState();
+  const [blockedNewClient, onChangeClientBlocked] = useState();
+  const [couponsNewClient, onChangeClientCoupons] = useState();
+  const [takeCouponsNewClient, onChangeClientTakedCoupons] = useState();
+  const [ageNewClient, onChangeClientAge] = useState();
   
   
   return (
@@ -40,12 +40,14 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientName}
         value={nameNewClient}
+        placeholder = {"Имя"}
       />
       <Text styles={styles.text}>Фамилия</Text>
       <TextInput
         style={styles.textInput}
         onChangeText={onChangeClientSurName}
         value={surenameNewClient}
+        placeholder = {"Фамилия"}
       />
 
       <Text styles={styles.text}>Отчество</Text>
@@ -53,6 +55,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientFatherName}
         value={fathernameNewClient}
+        placeholder = {"Отчество"}
       />
       <Text styles={styles.text}>Телефон</Text>
 
@@ -60,6 +63,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientPhone}
         value={phoneNewClient}
+        placeholder = {"Телефон"}
       />
 
       <Text styles={styles.text}>Номер карты</Text>
@@ -67,12 +71,14 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientCard}
         value={cardNewClient}
+        placeholder = {"Номер карты"}
       />
       <Text styles={styles.text}>Блокировка</Text>
       <TextInput
         style={styles.textInput}
         onChangeText={onChangeClientBlocked}
         value={blockedNewClient}
+        placeholder = {"Блокировка"}
       />
 
       <Text styles={styles.text}>Купоны</Text>
@@ -80,6 +86,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientCoupons}
         value={couponsNewClient}
+        placeholder = {"Купоны"}
       />
 
       <Text styles={styles.text}>Взятые купоны</Text>
@@ -87,6 +94,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientTakedCoupons}
         value={takeCouponsNewClient}
+        placeholder = {"Взятые купоны"}
       />
 
       <Text styles={styles.text}>Возраст</Text>
@@ -95,6 +103,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientAge}
         value={ageNewClient}
+        placeholder = {"Возраст"}
       />
         
       <Button title="SAVE" onPress={() => {
@@ -112,7 +121,14 @@ const onAddNewClient = route.params.onAddNewClient
           age:ageNewClient}
       
         onAddNewClient (client);
-        navigation.goBack();
+        
+        if (nameNewClient == undefined || surenameNewClient == undefined)
+        {
+          Alert.alert("1")
+        }
+        else {
+          navigation.goBack();
+      }
       }}
         
        />
