@@ -33,8 +33,10 @@ export default function ClientsScreen({ navigation }) {
 
 
 useEffect(() => {
+  //const t  = value === undefined ? currentClients : '2323'
   const newFilteredClients = currentClients.filter(client => client.position === value);
-  setFilteredClients(newFilteredClients);
+  // с отображением всех в самом начале
+  setFilteredClients(value === undefined || value === null ? currentClients : newFilteredClients );
 }, [value])
   
 
@@ -73,7 +75,7 @@ useEffect(() => {
       coupons: 25,
       takedCoupons: 10,
       age: 40,
-      position:"дворник"
+      position:"директор"
     },
     {
       name: 'Василий',
@@ -85,7 +87,7 @@ useEffect(() => {
       coupons: 3,
       takedCoupons: 7,
       age: 60,
-      position:"ceo"
+      position:"дворник"
     },
     {
       name: 'Вадим',
@@ -101,6 +103,12 @@ useEffect(() => {
     },
   ];
 
+  const  array = [1,2,3,4,5];
+  for(let i=0;i<array.length; i++) {
+    console.log('index',i);
+    const element = array[i]
+    console.log('index',element);
+  }
 
   // !!!хуки добавления клиента
   const [newClientObj, setClientObj] = useState(currentClients);

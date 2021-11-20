@@ -8,7 +8,7 @@ export default function HeaderBack({title}) {
                          
 
             <View style={styles.headerLine2}>
-                <Image style={styles.backImg} source = { require ('/Users/dmitrii/Projects/Project/assets/arrow.png')}/>
+                <Image style={styles.backImg} source = { require ('../../assets/arrow.png')}/>
                 <Text style ={styles.titleTitleText}>{title}</Text>
             </View>
             

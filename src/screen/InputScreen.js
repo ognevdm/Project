@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import HeaderBack from '../components/HeaderBack';
+import Counter from '../components/Counter';
 
 
 import {
@@ -15,7 +16,7 @@ import {
 
 export default function InputScreen({ navigation, route }) {
 
-const onAddNewClient = route.params.onAddNewClient
+  const onAddNewClient = route.params.onAddNewClient
 
 
   // хуки для полей ввода данных
@@ -28,26 +29,27 @@ const onAddNewClient = route.params.onAddNewClient
   const [couponsNewClient, onChangeClientCoupons] = useState();
   const [takeCouponsNewClient, onChangeClientTakedCoupons] = useState();
   const [ageNewClient, onChangeClientAge] = useState();
-  
-  
+
+
   return (
     <View styles={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <HeaderBack title="Новый клиент" />
       </TouchableOpacity>
+      <Counter></Counter>
       <Text styles={styles.text}>Имя</Text>
       <TextInput
         style={styles.textInput}
         onChangeText={onChangeClientName}
         value={nameNewClient}
-        placeholder = {"Имя"}
+        placeholder={"Имя"}
       />
       <Text styles={styles.text}>Фамилия</Text>
       <TextInput
         style={styles.textInput}
         onChangeText={onChangeClientSurName}
         value={surenameNewClient}
-        placeholder = {"Фамилия"}
+        placeholder={"Фамилия"}
       />
 
       <Text styles={styles.text}>Отчество</Text>
@@ -55,7 +57,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientFatherName}
         value={fathernameNewClient}
-        placeholder = {"Отчество"}
+        placeholder={"Отчество"}
       />
       <Text styles={styles.text}>Телефон</Text>
 
@@ -63,7 +65,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientPhone}
         value={phoneNewClient}
-        placeholder = {"Телефон"}
+        placeholder={"Телефон"}
       />
 
       <Text styles={styles.text}>Номер карты</Text>
@@ -71,14 +73,14 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientCard}
         value={cardNewClient}
-        placeholder = {"Номер карты"}
+        placeholder={"Номер карты"}
       />
       <Text styles={styles.text}>Блокировка</Text>
       <TextInput
         style={styles.textInput}
         onChangeText={onChangeClientBlocked}
         value={blockedNewClient}
-        placeholder = {"Блокировка"}
+        placeholder={"Блокировка"}
       />
 
       <Text styles={styles.text}>Купоны</Text>
@@ -86,7 +88,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientCoupons}
         value={couponsNewClient}
-        placeholder = {"Купоны"}
+        placeholder={"Купоны"}
       />
 
       <Text styles={styles.text}>Взятые купоны</Text>
@@ -94,7 +96,7 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientTakedCoupons}
         value={takeCouponsNewClient}
-        placeholder = {"Взятые купоны"}
+        placeholder={"Взятые купоны"}
       />
 
       <Text styles={styles.text}>Возраст</Text>
@@ -103,55 +105,55 @@ const onAddNewClient = route.params.onAddNewClient
         style={styles.textInput}
         onChangeText={onChangeClientAge}
         value={ageNewClient}
-        placeholder = {"Возраст"}
+        placeholder={"Возраст"}
       />
-        
+
       <Button title="SAVE" onPress={() => {
         //return navigation.goBack({onAddNewClient = {}});
 
-        const client =  {
-          name:nameNewClient,
-          surname:surenameNewClient,
-          fathername:fathernameNewClient,
-          phone:phoneNewClient,
-          card:cardNewClient,
-          blocked:blockedNewClient,
-          coupons:couponsNewClient,
-          takedCoupons:takeCouponsNewClient,
-          age:ageNewClient}
-      
-        onAddNewClient (client);
-        
-        if (nameNewClient == undefined || surenameNewClient == undefined)
-        {
+        const client = {
+          name: nameNewClient,
+          surname: surenameNewClient,
+          fathername: fathernameNewClient,
+          phone: phoneNewClient,
+          card: cardNewClient,
+          blocked: blockedNewClient,
+          coupons: couponsNewClient,
+          takedCoupons: takeCouponsNewClient,
+          age: ageNewClient
+        }
+
+        onAddNewClient(client);
+
+        if (nameNewClient == undefined || surenameNewClient == undefined) {
           Alert.alert("1")
         }
         else {
           navigation.goBack();
-      }
+        }
       }}
-        
-       />
-        <Button title="DEBUG: SHOW onAddNewClient" onPress={() => {
+
+      />
+      <Button title="DEBUG: SHOW onAddNewClient" onPress={() => {
         //return navigation.goBack({onAddNewClient = {}});
         onAddNewClient = {
-          name:nameNewClient,
-          surname:surenameNewClient,
-          fathername:fathernameNewClient,
-          phone:phoneNewClient,
-          card:cardNewClient,
-          blocked:blockedNewClient,
-          coupons:couponsNewClient,
-          takedCoupons:takeCouponsNewClient,
-          age:ageNewClient
+          name: nameNewClient,
+          surname: surenameNewClient,
+          fathername: fathernameNewClient,
+          phone: phoneNewClient,
+          card: cardNewClient,
+          blocked: blockedNewClient,
+          coupons: couponsNewClient,
+          takedCoupons: takeCouponsNewClient,
+          age: ageNewClient
         }
-        
+
         console.log(onAddNewClient)
-    
+
       }} />
-      
+
     </View>
-    
+
   );
 }
 
