@@ -188,7 +188,7 @@ useEffect(() => {
       <FlatList data={filteredClients} renderItem={renderItem} />
 
       <Button title="ADD CLIENTS IN NEW SCREEN" onPress={() => {
-        return navigation.navigate('InputScreen', { onAddNewClient })
+        return navigation.navigate('InputScreenReduser', { onAddNewClient })
       }} />
 
       <Button title="DEBUG: SHOW CLIENTS" onPress={() => {

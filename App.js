@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import ClientsScreen from "./src/screen/ClientsScreen";
 import InfoScreen from "./src/screen/InfoScreen";
 import InputScreen from "./src/screen/InputScreen";
+import InputScreenReduser from './src/screen/InputScreenReduser';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -19,6 +20,7 @@ export default function App({ navigation }) {
       <Stack.Screen name ='ClientsScreen' component ={ClientsScreen} />
       <Stack.Screen name ='InputScreen' component ={InputScreen} />
       <Stack.Screen name ='InfoScreen' component ={InfoScreen} />
+      <Stack.Screen name ='InputScreenReduser' component ={InputScreenReduser} />
     </Stack.Navigator>
   </NavigationContainer>
   );
