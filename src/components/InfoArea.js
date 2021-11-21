@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
   },
    fieldTitle: {
   fontSize:12,
-  fontWeight:"500",
+  fontWeight:'500',
   color:"white"
   },
   fieldContent: {
   fontSize:16,
-  fontWeight:"400",
+  fontWeight:'400',
   color:"white"
   }
 });

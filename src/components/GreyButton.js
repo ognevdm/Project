@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   backgroundColor:"grey",
   height:52,
   width:"95%",
-  justifyContent:"center",
+ // justifyContent:"center",
   padding:16,
   marginTop:17,
   shadowColor: "#000",
@@ -29,7 +29,7 @@ elevation: 3,
   },
   buttonText: {
   color:"white",
-  fontWeight:500,
+  fontWeight:'500',
   fontSize:16,
   fontFamily:'Roboto'
   }
