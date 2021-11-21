@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },  
   titleTitleText: {
   color:"white",
-  fontWeight:500,
+  fontWeight:"500",
   fontSize:20,
   fontFamily:'Roboto',
   alignSelf:"center",

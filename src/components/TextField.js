@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
   },
  fieldTitle: {
   fontSize:12,
-  fontWeight:500,
+  fontWeight:"500",
   color:"grey",
   fontFamily:"SF"
   },
   fieldContent: {
   fontSize:16,
-  fontWeight:400,
+  fontWeight:"400",
   color:"black"
   }
 });
