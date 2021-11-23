@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   color:"white",
   fontWeight:'500',
   fontSize:20,
-  fontFamily:'Roboto',
+  //fontFamily:'Roboto',
   alignSelf:"center",
   marginLeft:15
   },

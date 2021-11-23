@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   fontSize:12,
   fontWeight:'500',
   color:"grey",
-  fontFamily:"SF"
+  //fontFamily:"SF"
   },
   fieldContent: {
   fontSize:16,

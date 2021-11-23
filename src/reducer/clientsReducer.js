@@ -2,12 +2,12 @@ const ADD_CLIENS = 'clients\ADD_CLIENS';
 
 const initialValue = [];
 
-const clientsReducer = (state, action) => {
+const clientsReducer = (state = initialValue , action) => {
   switch (action.type) {
     case ADD_CLIENS:
       return [ ...state, action.payload ];
     default:
-      throw new Error(`Unknown action type: ${action.type}`);
+      return state;
   }
 };
 

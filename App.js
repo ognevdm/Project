@@ -9,11 +9,17 @@ import InputScreen from "./src/screen/InputScreen";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import combineReducers from './src/reducer';
+
 
 const Stack = createStackNavigator();
-
+const store = createStore(combineReducers);
 export default function App({ navigation }) {
   return (
+    <Provider store={store}>
     <NavigationContainer>
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name ='ClientsScreen' component ={ClientsScreen} />
@@ -21,6 +27,7 @@ export default function App({ navigation }) {
       <Stack.Screen name ='InfoScreen' component ={InfoScreen} />
     </Stack.Navigator>
   </NavigationContainer>
+  </Provider>
   );
 }
 

@@ -36,7 +36,6 @@ export default function InputScreen({ navigation, route }) {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <HeaderBack title="Новый клиент" />
       </TouchableOpacity>
-      <Counter></Counter>
       <Text styles={styles.text}>Имя</Text>
       <TextInput
         style={styles.textInput}
@@ -107,10 +106,9 @@ export default function InputScreen({ navigation, route }) {
         value={ageNewClient}
         placeholder={"Возраст"}
       />
+    
 
       <Button title="SAVE" onPress={() => {
-        //return navigation.goBack({onAddNewClient = {}});
-
         const client = {
           name: nameNewClient,
           surname: surenameNewClient,
@@ -120,37 +118,17 @@ export default function InputScreen({ navigation, route }) {
           blocked: blockedNewClient,
           coupons: couponsNewClient,
           takedCoupons: takeCouponsNewClient,
-          age: ageNewClient
+          age: ageNewClient,
+          position:"директор"
         }
 
         onAddNewClient(client);
-
-        if (nameNewClient == undefined || surenameNewClient == undefined) {
-          Alert.alert("1")
-        }
-        else {
-          navigation.goBack();
-        }
+        console.log("onAddNewClient")
+        navigation.goBack();
+        
       }}
-
       />
-      <Button title="DEBUG: SHOW onAddNewClient" onPress={() => {
-        //return navigation.goBack({onAddNewClient = {}});
-        onAddNewClient = {
-          name: nameNewClient,
-          surname: surenameNewClient,
-          fathername: fathernameNewClient,
-          phone: phoneNewClient,
-          card: cardNewClient,
-          blocked: blockedNewClient,
-          coupons: couponsNewClient,
-          takedCoupons: takeCouponsNewClient,
-          age: ageNewClient
-        }
-
-        console.log(onAddNewClient)
-
-      }} />
+  
 
     </View>
 

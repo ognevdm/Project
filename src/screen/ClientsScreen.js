@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useEffect, useState } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 import {
   Text,
   View,
@@ -14,8 +15,13 @@ import {
 
 import GreyButton from '../components/GreyButton';
 import Header from '../components/Header';
+import { addClient } from '../reducer/clientsReducer';
 
 export default function ClientsScreen({ navigation }) {
+const reduxClients = useSelector(state => state.clients);
+console.log("redux clients ",reduxClients);
+const dispatch = useDispatch();
+
 
   // хуки изменения поля ввода имени клиента
   //const [nameNewClient, onChangeClientName] = useState(null);
@@ -146,11 +152,14 @@ useEffect(() => {
     coupons: " ",
     takedCoupons: " ",
     age: " ",
+    position:"директор"
   }
-  let onAddNewClient = (newClient) => {
-    return (
-      setClientObj([...newClientObj, newClient])
-    )
+  const onAddNewClient = (newClient) => {
+  
+      setClientObj([...newClientObj, newClient]);
+      dispatch(addClient(newClient));
+      console.log ("New client",newClient)
+    
   }
 
   const renderItem = ({ item }) => {
