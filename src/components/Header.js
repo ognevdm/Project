@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   headerLine2: {
   backgroundColor:"#BF2828",
   height:56,
-  justifyContent:"center",
+  //justifyContent:"center",
   paddingLeft:16,
   shadowColor: "#000",
   shadowOffset: {
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
   
   },  titleTitleText: {
   color:"white",
-  fontWeight:500,
+  fontWeight:"500",
   fontSize:20,
-  fontFamily:'Roboto'
+  //fontFamily:'Roboto'
   }
 });

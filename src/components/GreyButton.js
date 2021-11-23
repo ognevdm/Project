@@ -29,8 +29,8 @@ elevation: 3,
   },
   buttonText: {
   color:"white",
-  fontWeight:500,
+  fontWeight:"500",
   fontSize:16,
-  fontFamily:'Roboto'
+  //fontFamily:'Roboto'
   }
 });

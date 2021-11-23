@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   flexDirection:"row",
   backgroundColor:"#BF2828",
   height:56,
-  justifyContent:"left",
+  //justifyContent:"left",
    shadowColor: "#000",
   shadowOffset: {
 	width: 0,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   color:"white",
   fontWeight:"500",
   fontSize:20,
-  fontFamily:'Roboto',
+  //fontFamily:'Roboto',
   alignSelf:"center",
   marginLeft:15
   },
