@@ -1,16 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useEffect, useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import {
-  Text,
   View,
   StyleSheet,
   TouchableOpacity,
-  Alert,
   FlatList,
   Button,
-  TextInput,
 } from 'react-native';
 
 import GreyButton from '../components/GreyButton';
@@ -23,10 +19,6 @@ console.log("redux clients ",reduxClients);
 const dispatch = useDispatch();
 
 
-  // хуки изменения поля ввода имени клиента
-  //const [nameNewClient, onChangeClientName] = useState(null);
-  //  const [surnameNewClient, onChangeClientSurname] = useState(null);
-
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -35,18 +27,14 @@ const dispatch = useDispatch();
     { label: 'CEO', value: 'ceo' },
     { label: 'CTO', value: 'cto' },
   ]);
-
-
-
-useEffect(() => {
-  //const t  = value === undefined ? currentClients : '2323'
-  const newFilteredClients = currentClients.filter(client => client.position === value);
+// хук useEffect
+  useEffect(() => {
+  const newFilteredClients = newClientsList.filter(client => client.position === value);
   // с отображением всех в самом начале
-  setFilteredClients(value === undefined || value === null ? currentClients : newFilteredClients );
-}, [value])
+  setFilteredClients(value === undefined || value === null ? currentClientsList : newFilteredClients );
   
-
-  const currentClients = [
+}, [value])
+  const currentClientsList = [
     {
       name: 'Иван',
       surname: 'Иванов',
@@ -117,8 +105,8 @@ useEffect(() => {
   }
 
   // !!!хуки добавления клиента
-  const [newClientObj, setClientObj] = useState(currentClients);
-  const [filteredClients, setFilteredClients] = useState(currentClients);
+  let [newClientsList, setClientList] = useState(currentClientsList);
+  const [filteredClients, setFilteredClients] = useState(currentClientsList);
 
   // ---- функция добавления клиента
   /*  const addNewClient = () => {
@@ -141,7 +129,7 @@ useEffect(() => {
      )
    }; */
 
-  // функция, которая вызывается в InputScreen и передается в него по кнопке Add Client
+  // функция, которая вызывается в InputScreen и передается в него объект клиента по кнопке SAVE
   let newClient = {
     name: " ",
     surname: " ",
@@ -156,11 +144,11 @@ useEffect(() => {
   }
   const onAddNewClient = (newClient) => {
   
-      setClientObj([...newClientObj, newClient]);
+      newClientsList = setClientList([...currentClientsList, newClient])
       dispatch(addClient(newClient));
       console.log ("New client",newClient)
-    
-  }
+      }
+  
 
   const renderItem = ({ item }) => {
     let cardColor = 'purple';
@@ -201,7 +189,7 @@ useEffect(() => {
       }} />
 
       <Button title="DEBUG: SHOW CLIENTS" onPress={() => {
-        console.log(newClientObj)
+        console.log("newClientsList",newClientsList)
       }} />
     </View>
 

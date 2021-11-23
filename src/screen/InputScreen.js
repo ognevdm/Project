@@ -109,6 +109,7 @@ export default function InputScreen({ navigation, route }) {
     
 
       <Button title="SAVE" onPress={() => {
+
         const client = {
           name: nameNewClient,
           surname: surenameNewClient,
@@ -121,14 +122,10 @@ export default function InputScreen({ navigation, route }) {
           age: ageNewClient,
           position:"директор"
         }
-
         onAddNewClient(client);
-        console.log("onAddNewClient")
         navigation.goBack();
-        
       }}
       />
-  
 
     </View>
 
