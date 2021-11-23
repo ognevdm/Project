@@ -36,7 +36,6 @@ export default function InputScreen({ navigation, route }) {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <HeaderBack title="Новый клиент" />
       </TouchableOpacity>
-      <Counter></Counter>
       <Text styles={styles.text}>Имя</Text>
       <TextInput
         style={styles.textInput}
@@ -107,9 +106,9 @@ export default function InputScreen({ navigation, route }) {
         value={ageNewClient}
         placeholder={"Возраст"}
       />
+    
 
       <Button title="SAVE" onPress={() => {
-      
 
         const client = {
           name: nameNewClient,
@@ -123,11 +122,9 @@ export default function InputScreen({ navigation, route }) {
           age: ageNewClient,
           position:"директор"
         }
-
         onAddNewClient(client);
         navigation.goBack();
       }}
-
       />
 
     </View>

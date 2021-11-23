@@ -1,5 +1,6 @@
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useEffect, useState } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 import {
   View,
   StyleSheet,
@@ -10,8 +11,13 @@ import {
 
 import GreyButton from '../components/GreyButton';
 import Header from '../components/Header';
+import { addClient } from '../reducer/clientsReducer';
 
 export default function ClientsScreen({ navigation }) {
+const reduxClients = useSelector(state => state.clients);
+console.log("redux clients ",reduxClients);
+const dispatch = useDispatch();
+
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -134,13 +140,14 @@ export default function ClientsScreen({ navigation }) {
     coupons: " ",
     takedCoupons: " ",
     age: " ",
-    position:" "
+    position:"директор"
   }
-  let onAddNewClient = (newClient) => {
-    return (
+  const onAddNewClient = (newClient) => {
+  
       newClientsList = setClientList([...currentClientsList, newClient])
-    )
-  }
+      dispatch(addClient(newClient));
+      console.log ("New client",newClient)
+      }
   
 
   const renderItem = ({ item }) => {
