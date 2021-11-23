@@ -109,7 +109,7 @@ export default function InputScreen({ navigation, route }) {
       />
 
       <Button title="SAVE" onPress={() => {
-        //return navigation.goBack({onAddNewClient = {}});
+      
 
         const client = {
           name: nameNewClient,
@@ -120,37 +120,15 @@ export default function InputScreen({ navigation, route }) {
           blocked: blockedNewClient,
           coupons: couponsNewClient,
           takedCoupons: takeCouponsNewClient,
-          age: ageNewClient
+          age: ageNewClient,
+          position:"директор"
         }
 
         onAddNewClient(client);
-
-        if (nameNewClient == undefined || surenameNewClient == undefined) {
-          Alert.alert("1")
-        }
-        else {
-          navigation.goBack();
-        }
+        navigation.goBack();
       }}
 
       />
-      <Button title="DEBUG: SHOW onAddNewClient" onPress={() => {
-        //return navigation.goBack({onAddNewClient = {}});
-        onAddNewClient = {
-          name: nameNewClient,
-          surname: surenameNewClient,
-          fathername: fathernameNewClient,
-          phone: phoneNewClient,
-          card: cardNewClient,
-          blocked: blockedNewClient,
-          coupons: couponsNewClient,
-          takedCoupons: takeCouponsNewClient,
-          age: ageNewClient
-        }
-
-        console.log(onAddNewClient)
-
-      }} />
 
     </View>
 
