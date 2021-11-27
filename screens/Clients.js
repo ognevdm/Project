@@ -33,8 +33,8 @@ export default function Clients({ navigation, route }) {
   // ReactRedux
   const counter = useSelector((state) => state.clients);
   const profile = useSelector(state => state.profile);
-  console.log('kff', counter)
-  console.log ('ищу тебя', profile)
+  console.log('counter ', counter)
+  console.log ('profile ', profile)
   const dispatch = useDispatch()
   // 
 
@@ -128,11 +128,11 @@ export default function Clients({ navigation, route }) {
       <View style={styles.viewLine}></View>
       
       <View style={styles.viewLine}></View>
-        <Button title="Внести данные клиента в отдельном окне useState" onPress={() => { return navigation.navigate('InputPage_useState', {onAddClient})}}></Button>
+        <Button title="ADD NEW CLIENT useState" onPress={() => { return navigation.navigate('InputPage_useState', {onAddClient})}}></Button>
       <View style={styles.viewLine}></View>
 
       <View style={styles.viewLineBlue}></View>
-        <Button title={`Внести данные клиента в отдельном окне \n useReducer`} onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
+        <Button title={"ADD NEW CLIENT useReducer"} onPress={() => { return navigation.navigate('InputPage', {onAddClient})}}></Button>
       <View style={styles.viewLineBlue}></View>
 
       
