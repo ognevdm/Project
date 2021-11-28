@@ -4,6 +4,8 @@ import { Text, View, StyleSheet, SafeAreaView, TextInput, Button} from 'react-na
 
 export default function InputPage({ navigation, route}) {
 
+
+  // функция на добавление клиента
   const onAddClient = route.params.onAddClient
   
   const initialValue = {
