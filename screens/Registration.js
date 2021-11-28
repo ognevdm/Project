@@ -10,7 +10,6 @@ const registrationBase = {
   telephone: '',
   e_mail: '',
   position: 'регистрация',
-  
 };
 
 const reducer = (state, action) => {

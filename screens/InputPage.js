@@ -1,3 +1,4 @@
+// добавление клиента через Redux
 import React, {useReducer } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TextInput, Button} from 'react-native';
 
@@ -8,6 +9,7 @@ export default function InputPage({ navigation, route}) {
   // функция на добавление клиента
   const onAddClient = route.params.onAddClient
   
+  // 1. первоначальные значения
   const initialValue = {
     id: '',
     name: '',
@@ -24,10 +26,11 @@ export default function InputPage({ navigation, route}) {
     
   };
   
+  // 2. логика редюсера
   const reducer = (state, action) => {
     switch (action.type) {
       case 'name':
-        return {...state, name: action.payload, fullname: `${action.payload} ${state.surname}`, id: `${action.payload}` };
+        return {...state, name: action.payload, fullname: `${action.payload} ${state.surname }`, id: `${action.payload}` };
       case 'surname':
         return {...state, surname: action.payload, fullname: `${state.name} ${action.payload}` };
       case 'age':
@@ -37,16 +40,22 @@ export default function InputPage({ navigation, route}) {
     }
   };
 
+// 3. создаем useReducer
+// initialValue - первоначальное значение
 
+// state - изменяемое значение
+// dispatch - диспетчер: в него передаем тип и пейлоад
+
+// reducer - редюсер: в нем описываем кейсы действий
     const [state, dispatch] = useReducer(reducer, initialValue);
-// 
-  // 
+
+// 4. отображаем UI
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите имя</Text> 
         <TextInput style={styles.input}
-                   placeholder="Например Роман"
+                   placeholder="Имя"
                    value={state.name} 
                    onChangeText={(text) =>
                    dispatch({ type: 'name', payload: text })
@@ -56,7 +65,7 @@ export default function InputPage({ navigation, route}) {
       <View style={styles.viewInput}>
         <Text style={styles.textInput}>Введите Фамилию</Text> 
         <TextInput style={styles.input}
-                   placeholder="Например Васильев"
+                   placeholder="Фамилия"
                    value={state.surname} 
                    onChangeText={(text) =>
                    dispatch({ type: 'surname', payload: text })
